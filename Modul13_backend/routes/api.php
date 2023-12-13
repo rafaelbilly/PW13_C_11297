@@ -29,4 +29,12 @@ Route::middleware('auth:api')->group(function(){
     Route::delete('/contents/{id}',[App\Http\Controllers\Api\ContentController::class,'destroy']);
 
     Route::get('/contents/user/{id}',[App\Http\Controllers\Api\ContentController::class,'showContentbyUser']);
+    
+    Route::get('/komentars',[App\Http\Controllers\Api\KomentarController::class,'index']);
+    Route::post('/komentars',[App\Http\Controllers\Api\KomentarController::class,'store']);
+    Route::get('/komentars/{id}',[App\Http\Controllers\Api\KomentarController::class,'show']);
+    Route::put('/komentars/{id}',[App\Http\Controllers\Api\KomentarController::class,'update']);
+    Route::delete('/komentars/{id}',[App\Http\Controllers\Api\KomentarController::class,'destroy']);
+
+    Route::get('/komentars/content/{id}',[App\Http\Controllers\Api\KomentarController::class, 'showKomentarsbyContent']);
 });

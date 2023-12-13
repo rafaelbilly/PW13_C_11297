@@ -23,7 +23,7 @@ const TopNavbar = ({ routes }) => {
                 <Navbar.Brand
                     style={{ cursor: "pointer" }}
                     onClick={() => navigate("/")}
-                    tabIndex={0} // agar bisa diakses dengan keyboard
+                    tabIndex={0}
                 >
                     <div className="d-flex align-items-center">
                         <img

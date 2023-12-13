@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Alert, Col, Container, Row, Spinner, Stack } from "react-bootstrap";
+import React from "react";
+import { Link } from "react-router-dom";
 import { GetAllContents } from "../api/apiContent";
+
 import { getThumbnail } from "../api";
 
 const DashboardPage = () => {
   const [contents, setContents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     GetAllContents()
@@ -52,6 +56,12 @@ const DashboardPage = () => {
                 <div className="card-body">
                   <h5 className="card-title text-truncate">{content.title}</h5>
                   <p className="card-text">{content.description}</p>
+                  <Link
+                    to={`/comment/${content.id}`}
+                    className="btn btn-primary w-100"
+                  >
+                    Comment
+                  </Link>
                 </div>
               </div>
             </Col>

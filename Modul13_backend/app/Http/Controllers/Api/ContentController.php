@@ -41,7 +41,6 @@ class ContentController extends Controller
             'message' => 'Contents of '.$user->name.' Retrieved',
             'data' => $contents
         ],200);
-
     }
 
 
