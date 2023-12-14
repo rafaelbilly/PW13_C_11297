@@ -7,6 +7,8 @@ import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
 import ContentPage from "../pages/ContentPage";
+import CommentPage from "../pages/CommentPage";
+
 import ProtectedRoutes from "./ProtectedRoutes";
 const router = createBrowserRouter([
   {
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/user/content",
         element: <ContentPage />,
+      },
+      {
+        path: "/user/comment/:id",
+        element: <CommentPage />,
       },
     ],
   },

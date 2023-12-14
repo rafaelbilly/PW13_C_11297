@@ -14,10 +14,9 @@ export const GetAllKomentars = async () => {
   }
 };
 
-export const GetMyKomentars = async () => {
-  const id = JSON.parse(sessionStorage.getItem("user")).id;
+export const GetKomentarsByContent = async (id) => {
   try {
-    const response = await useAxios.get(`/komentars/user/${id}`, {
+    const response = await useAxios.get(`/komentars/content/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
@@ -71,7 +70,7 @@ export const UpdateKomentars = async (values) => {
   }
 };
 
-export const DeleteContent = async (id) => {
+export const DeleteKomentars = async (id) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   try {
     const response = await useAxios.delete(`/komentars/${id}`, {

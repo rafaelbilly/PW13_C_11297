@@ -46,7 +46,8 @@ class KomentarController extends Controller
             ], 404);
         }
 
-        $komentars = Komentars::where('id_content', $content->id)->get();
+        $komentars = Komentars::with('user')->where('id_content', $content->id)->get();
+
         return response([
             'message' => 'Comments of ' . $content->title . ' Retrieved',
             'data' => $komentars
@@ -120,7 +121,7 @@ class KomentarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $komentar= Komentars::find($id);
+        $komentar = Komentars::find($id);
         if (is_null($komentar)) {
             return response([
                 'message' => 'Komentar Not Found',
@@ -132,26 +133,10 @@ class KomentarController extends Controller
 
         $validate = Validator::make($updateData, [
             'comment' => 'required',
-            'id_content' => 'exists:contents,id',
         ]);
 
         if ($validate->fails()) {
             return response(['message' => $validate->errors()], 400);
-        }
-
-        $user = Auth::user();
-
-        if (is_null($user)) {
-            return response(['message' => 'User Not Authenticated'], 401);
-        }
-
-        $id_content = $updateData['id_content'];
-        $content = Contents::find($id_content);
-
-        if (is_null($content)) {
-            return response([
-                'message' => 'Content Not Found'
-            ], 404);
         }
 
         $komentar->update($updateData);

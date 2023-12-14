@@ -6,7 +6,7 @@ import {
   Spinner,
   Alert,
 } from "react-bootstrap";
-
+import { useNavigate, useParams } from "react-router-dom";
 // import { useMutation } from "@tanstack/react-query";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -22,6 +22,9 @@ const ContentPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [contents, setContents] = useState([]);
   const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();
+  const { id } = useParams();
+
 
   const deleteContent = (id) => {
     setIsPending(true);

@@ -57,7 +57,7 @@ const DashboardPage = () => {
                   <h5 className="card-title text-truncate">{content.title}</h5>
                   <p className="card-text">{content.description}</p>
                   <Link
-                    to={`/comment/${content.id}`}
+                    to={`/user/comment/${content.id}`}
                     className="btn btn-primary w-100"
                   >
                     Comment
